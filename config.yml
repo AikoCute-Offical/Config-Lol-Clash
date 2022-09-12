@@ -1,0 +1,23 @@
+mixed-port: 7890
+allow-lan: true
+bind-address: '*'
+mode: global
+log-level: infoxx
+external-controller: '127.0.0.1:9090'
+dns:
+    enable: true
+    ipv6: false
+    default-nameserver: [1.1.1.1, 1.0.0.1]
+    enhanced-mode: redir-host
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: ['https://dns.cloudflare.com/dns-query']
+    fallback: ['https://dns.google/dns-query', 'https://dns.cloudflare.com/dns-query', 'tls://8.8.4.4:853']
+    fallback-filter: { geoip: true, ipcidr: [240.0.0.0/4, 0.0.0.0/32] }
+proxies:
+    - { name: '🇻🇳 HN [Load IP]', type: vmess, server: 125.212.238.1, port: 80, uuid: udid, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { headers: { Host: dl.kgvn.garenanow.com } } }
+    - { name: '🇻🇳 HN [TLS] (Load IP)', type: trojan, server: 125.212.238.1, port: 443, password: udid, udp: true, sni: dl.kgvn.garenanow.com, skip-cert-verify: true }
+    - { name: '🇻🇳 HCM [Load IP]', type: vmess, server: 27.71.235.88, port: 80, uuid: udid, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { headers: { Host: dl.kgvn.garenanow.com } } }
+    - { name: '🇻🇳 HCM [TLS] (Load IP)', type: trojan, server: 27.71.235.88, port: 443, password: udid, udp: true, sni: dl.kgvn.garenanow.com, skip-cert-verify: true }
+    - { name: '🇸🇬 Singapore Aiko ( PC )', type: vmess, server: 172.104.160.10, port: 80, uuid: udid, alterId: 0, cipher: auto, udp: true, network: ws, ws-opts: { headers: { Host: dl.kgvn.garenanow.com } } }
+    - { name: '🇸🇬 Singapore Aiko ( PC ) [TLS]', type: trojan, server: 172.104.160.10, port: 443, password: udid, udp: true, sni: dl.kgvn.garenanow.com, skip-cert-verify: true }
